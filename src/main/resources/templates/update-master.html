@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Master Info</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<h2>Форма Для Обновления Инормации об Мастере</h2>
+<form method="post" th:action="@{/masters/update/{id}(id=${master.masterId})}" th:object="${master}">
+    <div class="input-container">
+        <label for="fullName">ФИО</label>
+        <input type="text" name="fullName" id="fullName" th:field="*{fullName}"/>
+        <span class="validationErrors" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></span>
+    </div>
+    <div class="input-container">
+        <label for="post">Должность</label>
+        <input type="text" name="post" id="post" th:field="*{post}"/>
+        <span class="validationErrors" th:if="${#fields.hasErrors('post')}" th:errors="*{post}"></span>
+    </div>
+    <div class="input-container">
+        <label for="phone">Номер Тел.</label>
+        <input type="text" name="phone" id="phone" placeholder="89998881122" th:field="*{phone}"/>
+        <span class="validationErrors" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+    </div>
+    <button type="submit" class="edit-button">Обновить</button>
+</form>
+</body>
+</html>

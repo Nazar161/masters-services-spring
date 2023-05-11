@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Услуги</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+    <a href="/">Главная страница</a>
+    <h1>Список Услуг</h1>
+    <div class="master-service-items">
+        <div><b>Наименование услуги</b></div>
+        <div><b>Продолжительность</b></div>
+        <div><b>Стоимость услуги</b></div>
+    </div>
+    <div class="master-service-items" th:each="service : ${services}">
+        <div th:text="${service.title}"></div>
+        <div th:text="${service.duration}"></div>
+        <div th:text="${service.price}"></div>
+    </div>
+</body>
+</html>

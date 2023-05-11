@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация - Online Services</title>
+</head>
+<body>
+    <h1>Регистрация для входа</h1>
+    <img th:src="@{/images/logo.png}"/>
+    <div th:if="${error}">
+        Невозможно войти. Проверьте свое имя пользователя и пароль.
+    </div>
+    <p>Не зарегистрированы? Перейдите по ссылке
+        <a th:href="@{/registration}">регистрация</a> для регистрации.</p>
+    <form method="POST" th:action="@{/login}" id="loginForm">
+        <label for="username">Имя пользователя: </label>
+        <input type="text" name="username" id="username"/><br/> <label for="password">Пароль: </label>
+        <input type="password" name="password" id="password"/><br/>
+        <input type="submit" value="Войти"/>
+    </form>
+</body>
+</html>

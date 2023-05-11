@@ -1,0 +1,66 @@
+.master-container {
+    margin-bottom: 15px;
+}
+
+.master-info-container, .master-service-container {
+    display: flex;
+    align-items: center;
+}
+
+.master-service-items {
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    flex: 1;
+}
+
+.master-service-items div {
+    padding: 2px;
+    border: 1px solid #000;
+    flex: 1;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.delete-button, .edit-button {
+    text-decoration: none;
+    background-color: red;
+    color: #fff;
+    margin-left: 15px;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: system-ui;
+}
+
+a.edit-button, button.edit-button {
+    color: #000;
+    background-color: #7fbdff;
+    cursor: pointer;
+}
+
+a.service-button {
+    padding: 3px;
+    font-size: 12px;
+}
+
+.create-button {
+    padding: 5px;
+    border-radius: 4px;
+    background-color: green;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: system-ui;
+}
+
+.validationErrors {
+    color: red;
+    display: flex;
+}

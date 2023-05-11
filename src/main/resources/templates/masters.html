@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Services - Мастера</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+    <a href="/">Главная страница</a>
+    <h1>Список Мастеров</h1>
+    <div class="master-container" th:each="master : ${masters}">
+        <div class="master-info-container">
+            <b><div th:text="${master.masterId} + ."></div></b>
+            <b><div th:text="${master.fullName}"></div></b>
+            <div style="margin-left: 10px" th:text="${master.post}"></div>
+            <a th:href="'tel:' + ${master.phone}" style="margin-left: 10px; color: blue" th:text="${master.phone}"></a>
+            <a class="edit-button" th:href="@{/masters/edit/{id}(id=${master.masterId})}">Редактировать</a>
+            <a class="delete-button" th:href="@{/masters/delete/{id}(id=${master.masterId})}">Удалить</a>
+        </div>
+        <div style="margin-bottom: 10px" th:if="${#lists.size(master.services) > 0}">
+            <u>Услуги:</u>
+            <div class="master-service-items">
+                <div><b>Наименование услуги</b></div>
+                <div><b>Продолжительность</b></div>
+                <div><b>Стоимость услуги</b></div>
+            </div>
+            <div class="master-service-container" th:each="service : ${master.services}">
+                <div class="master-service-items">
+                    <div th:text="${service.title}"></div>
+                    <div th:text="${service.duration}"></div>
+                    <div th:text="${service.price}"></div>
+                </div>
+                <a class="edit-button service-button" th:href="@{/services/edit/{id}(id=${service.id})}">Редактировать</a>
+                <a class="delete-button service-button" th:href="@{/services/delete/{id}(id=${service.id})}">Удалить</a>
+            </div>
+        </div>
+        <a class="create-button" th:href="@{/services/create/{masterId}(masterId=${master.masterId})}">Добавить Услугу</a>
+    </div>
+    <h2>Форма Добавления Мастера</h2>
+    <form method="post" th:action="@{/masters}" th:object="${master}">
+        <div class="input-container">
+            <label for="fullName">ФИО</label>
+            <input type="text" name="fullName" id="fullName" th:field = "*{fullName}"/>
+            <span class="validationErrors" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></span>
+        </div>
+        <div class="input-container">
+            <label for="post">Должность</label>
+            <input type="text" name="post" id="post" th:field = "*{post}"/>
+            <span class="validationErrors" th:if="${#fields.hasErrors('post')}" th:errors="*{post}"></span>
+        </div>
+        <div class="input-container">
+            <label for="phone">Номер Тел.</label>
+            <input type="text" name="phone" id="phone" placeholder="89998881122" th:field = "*{phone}"/>
+            <span class="validationErrors" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+        </div>
+        <button type="submit" class="create-button">Добавить Мастера</button>
+    </form>
+    <div style="margin-top: 20px">
+        <a class="delete-button" th:href="@{/masters/deleteAll}">Удалить Всю Информацию</a>
+    </div>
+</body>
+</html>

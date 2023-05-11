@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Service</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<h2>Форма Добавления Услуги</h2>
+<h2>Мастер: <u th:text="${master.fullName}"></u>
+    <b th:text="'(' + ${master.post} + ')'"></b>
+</h2>
+<form method="post" th:action="@{/services/create/{masterId}(masterId=${master.masterId})}" th:object="${service}">
+    <div class="input-container">
+        <label for="title">Наименование услуги</label>
+        <input type="text" name="title" id="title" th:field="*{title}"/>
+        <span class="validationErrors" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+    </div>
+    <div class="input-container">
+        <label for="duration">Продолжительность</label>
+        <input type="number" step="0.5" name="duration" id="duration" th:field="*{duration}"/>
+        <span class="validationErrors" th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"></span>
+    </div>
+    <div class="input-container">
+        <label for="price">Стоимость услуги</label>
+        <input type="number" step="50" name="phone" id="price" th:field="*{price}"/>
+        <span class="validationErrors" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+    </div>
+    <button type="submit" class="create-button">Добавить</button>
+</form>
+</body>
+</html>
